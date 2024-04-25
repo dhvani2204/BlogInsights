@@ -11,11 +11,10 @@ function Header() {
     to='/' 
     className='self-center whitespace-nowrap text-sm sm:text-xl 
     font-semibold dark:text-white'>
-    <span className='px-2 py-1 bg-gradient-to-r from-indigo-500
-     via-purple-500 to-pink-500 rounded-lg text-white'>
-        Blog
+    <span>Blog</span>
+    <span className='px-2 py-1 bg-gradient-to-r from-blue-500 to-indigo-900 rounded-lg text-white'>
+        Insights
     </span>
-    <span>Insights</span>
     </Link>
 
     <form className=' flex justify-center items-center space-x-4 flex-grow'>
@@ -52,7 +51,7 @@ function Header() {
     <Link to='/sign-in'>
     <Button
     className='w-20 h-10 rounded-full' color='gray' pill   style={{
-    background: 'linear-gradient(to right, #8A2BE2, #4169E1)', // Purple to Blue gradient
+    background: 'linear-gradient(to right, #ADD8E6,#00008B)', // light to dark Blue gradient
     color: 'white', 
     display: 'flex',
         justifyContent: 'center', 

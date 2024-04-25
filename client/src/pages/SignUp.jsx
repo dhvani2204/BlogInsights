@@ -50,11 +50,10 @@ const res=await fetch('/api/auth/signup',{
       <Link 
       to='/' 
       className='font-bold dark:text-white text-4xl'>
-      <span className='px-2 py-1 bg-gradient-to-r from-indigo-500
-       via-purple-500 to-pink-500 rounded-lg text-white'>
-          Blog
+      <span>Blog</span>
+      <span className='px-2 py-1 bg-gradient-to-r  from-blue-500 to-indigo-900 rounded-lg text-white'>
+          Insights
       </span>
-      <span>Insights</span>
       </Link>
       <p className='text-sm mt-5'>
       This is a demo project. You can signup with email or password or google
@@ -89,7 +88,7 @@ const res=await fetch('/api/auth/signup',{
 />
       </div>
       <Button className='w-20 h-10' color='gray' pill   style={{
-        background: 'linear-gradient(to right, #8A2BE2, #4169E1)', // Purple to Blue gradient
+        background: 'linear-gradient(to right,  #ADD8E6, #00008B)', // light to dark Blue gradient
         color: 'white',
         display: 'flex', 
         justifyContent: 'center', // Center horizontally
