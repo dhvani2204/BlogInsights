@@ -51,9 +51,14 @@ function Header() {
     <span className='mx-2'></span>
     <Link to='/sign-in'>
     <Button
-    className='w-20 h-10' color='gray' pill   style={{
+    className='w-20 h-10 rounded-full' color='gray' pill   style={{
     background: 'linear-gradient(to right, #8A2BE2, #4169E1)', // Purple to Blue gradient
     color: 'white', 
+    display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        borderRadius: '999px',
+        lineHeight: '1'
     }}>
       Sign In
       </Button>
