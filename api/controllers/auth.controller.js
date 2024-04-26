@@ -1,11 +1,14 @@
 import User from '../models/user.model.js'
 import bcryptjs from 'bcryptjs'
 import { errorHandler } from '../utils/error.js';
+import jwt from 'jsonwebtoken';
+
+const jwtSecret = 'dhvani'
 
 
 export const signup=async(req,res,next)=>{
     const { username, email, password}=req.body;
-    if(!username ||!email||!password||username==''||email==''||password==''){
+    if(!username ||!email||!password||username===''||email===''||password===''){
         //return res.status(400).json({message:'All fields are required'});
         next(errorHandler(400,'All fiels are required'));
     }
@@ -22,4 +25,33 @@ export const signup=async(req,res,next)=>{
         //res.status(500).json({message:error.message})
        next(error);
     }
+};
+export const signin=async(req,res,next)=>{
+const { email,password }=req.body;
+
+if(!email || !password || email === ''|| password===''){
+    next(errorHandler(400,'All field are required'));
+}
+try{
+ const validUser=await User.findOne({ email });
+ if(!validUser){
+    return next(errorHandler(404,'User not found'));
+ }
+ const validPassword=bcryptjs.compareSync(password,validUser.password);
+ if(!validPassword){
+    return next(errorHandler(400,'Invalid password'));
+ }
+ //authenticate user from cookie stored as below after creating a token
+ const token=jwt.sign(
+    {id: validUser._id}, jwtSecret);
+
+    const{password:pass, ...rest} = validUser._doc;
+
+    res.status(200).cookie('access_token',token,{
+        httpOnly:true
+    }).json(rest);
+
+}catch(error){
+    next(error);
+}
 };
