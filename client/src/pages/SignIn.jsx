@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { signInStart,signInSuccess,signInFailure  } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 function SignIn() {
   const [formData,setFormData]=useState({});
@@ -90,7 +91,7 @@ const res=await fetch('/api/auth/signin',{
         id='password' onChange={handleChange}
 />
       </div>
-      <Button className='w-20 h-10' color='gray' pill   style={{
+      <Button className='w-80 h-10' color='gray' pill   style={{
         background: 'linear-gradient(to right,  #ADD8E6, #00008B)', // light to dark Blue gradient
         color: 'white',
         display: 'flex', 
@@ -107,6 +108,8 @@ const res=await fetch('/api/auth/signin',{
           ):'Sign In'
           }
       </Button>
+      <OAuth />
+
       </form>
       <div className="flex gap-2 text-sm mt-5">
       <span>Don't have an account?</span>
