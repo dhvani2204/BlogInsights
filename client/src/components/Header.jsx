@@ -1,10 +1,13 @@
 import React from 'react'
-import { Button, Navbar, NavbarLink, TextInput } from 'flowbite-react'
-import { Link } from 'react-router-dom' //go to a page whitjout refreshing
+import { Button, Dropdown, Navbar, NavbarLink, TextInput, Avatar } from 'flowbite-react'
+import { Link,useLocation } from 'react-router-dom' //go to a page whitjout refreshing
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon } from 'react-icons/fa'
+import {useSelector} from 'react-redux'
 
 function Header() {
+  const path=useLocation().pathname;
+  const {currentUser}=useSelector(state => state.user);
   return (
     <Navbar className='border-b-2'>
     <Link 
@@ -48,7 +51,34 @@ function Header() {
         <FaMoon />
     </Button>
     <span className='mx-2'></span>
-    <Link to='/sign-in'>
+    {currentUser?(
+      <Dropdown>
+      arrowIcon={false}
+      inline
+      label={
+        <Avatar
+        alt='user'
+        img={currentUser.profilePicture}
+        rounded
+        />
+      }
+      <Dropdown.Header>
+      <span className='block text-sm'>@{currentUser.username}</span>
+      <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
+      </Dropdown.Header>
+      <Link to={'/dashboard?tab=profile'}>
+      <Dropdown.Item>
+      Profile
+      </Dropdown.Item>
+      </Link>
+      <Dropdown.Divider/>
+      <Dropdown.Item>
+      Sign out
+      </Dropdown.Item>
+      </Dropdown>
+    ):
+      (
+        <Link to='/sign-in'>
     <Button
     className='w-20 h-10 rounded-full' color='gray' pill   style={{
     background: 'linear-gradient(to right, #ADD8E6,#00008B)', // light to dark Blue gradient
@@ -62,6 +92,9 @@ function Header() {
       Sign In
       </Button>
       </Link>
+      )
+    }
+    
       </div>
     </Navbar>
   )
