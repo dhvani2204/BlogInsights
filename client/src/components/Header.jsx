@@ -2,12 +2,15 @@ import React from 'react'
 import { Button, Dropdown, Navbar, NavbarLink, TextInput, Avatar } from 'flowbite-react'
 import { Link,useLocation } from 'react-router-dom' //go to a page whitjout refreshing
 import { AiOutlineSearch } from 'react-icons/ai'
-import { FaMoon } from 'react-icons/fa'
-import {useSelector} from 'react-redux'
+import { FaMoon, FaSun } from 'react-icons/fa'
+import {useSelector,useDispatch} from 'react-redux'
+import { toggleTheme } from '../redux/theme/themeSlice'
 
 function Header() {
   const path=useLocation().pathname;
+  const dispatch=useDispatch();
   const {currentUser}=useSelector(state => state.user);
+  const {theme}=useSelector((state)=>state.theme);
   return (
     <Navbar className='border-b-2'>
     <Link 
@@ -47,12 +50,17 @@ function Header() {
   </Navbar.Collapse>
 
   <div className='flex gap md:order-2'>
-    <Button color='gray' pill className='w-10 h-10 sm:inline'>
-        <FaMoon />
+    <Button 
+    className='w-10 h-10 sm:inline' 
+    color='white' 
+    pill 
+    onClick={()=>dispatch(toggleTheme())}
+    >
+    {theme==='light'?<FaMoon /> : <FaSun />}
     </Button>
     <span className='mx-2'></span>
     {currentUser?(
-      <Dropdown>
+      <Dropdown
       arrowIcon={false}
       inline
       label={
@@ -62,6 +70,7 @@ function Header() {
         rounded
         />
       }
+      >
       <Dropdown.Header>
       <span className='block text-sm'>@{currentUser.username}</span>
       <span className='block text-sm font-medium truncate'>{currentUser.email}</span>

@@ -41,11 +41,11 @@ function OAuth() {
   return (
     <Button className='w-80 h-10' color='gray' pill   style={{
         background: 'linear-gradient(to right, #FFC0CB, #FFA500)', // light to dark Blue gradient
-        color: 'white',
+        //color: 'white',
         display: 'flex', 
         justifyContent: 'center', // Center horizontally
         alignItems: 'center', // Center vertically
-        lineHeight: '1'}} type='button' outline onClick={handleGoogleClick}>
+        lineHeight: '1'}} type='button' onClick={handleGoogleClick}>
       <AiFillGoogleCircle className='w-6 h-6 mr-2'/>
       Continue with Google
     </Button>
