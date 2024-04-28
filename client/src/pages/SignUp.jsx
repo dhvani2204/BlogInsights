@@ -57,7 +57,7 @@ const res=await fetch('/api/auth/signup',{
       </span>
       </Link>
       <p className='text-sm mt-5'>
-      This is a demo project. You can signup with email or password or google
+      Welcome to BlogInsights. You can signup with email or password or google
       </p>
       </div>
       {/*right*/}

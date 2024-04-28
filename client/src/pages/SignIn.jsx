@@ -67,7 +67,7 @@ const res=await fetch('/api/auth/signin',{
       </span>
       </Link>
       <p className='text-sm mt-5'>
-      This is a demo project. You can signin with email or password or google
+      A One-stop Tech-Blogging Platform. You can signin with email or password or google
       </p>
       </div>
       {/*right*/}
