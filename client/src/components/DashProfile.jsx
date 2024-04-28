@@ -6,7 +6,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import {app} from '../firebase'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
+import {Link} from 'react-router-dom'
 
 
 function DashProfile() {
@@ -110,6 +110,25 @@ function DashProfile() {
         }}>
       Update
       </Button>
+      {
+      currentUser.isAdmin &&(
+        <Link to={'/create-post'}>
+        <Button type='button' className='w-full h-10' color='gray' pill   style={{
+          background: 'linear-gradient(to right, #FFC0CB, #FFA500)', // light to dark Blue gradient
+        color: 'white', 
+        display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        borderRadius: '999px',
+        lineHeight: '1'
+    }}>
+    Create a post
+    </Button>
+        </Link>
+     )
+    }
+
+
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
       
